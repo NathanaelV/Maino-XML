@@ -17,6 +17,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop-rails', require: false
 end
