@@ -1,0 +1,2 @@
+class XmlFile < ApplicationRecord
+end

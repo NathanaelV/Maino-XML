@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    attributes:
+      xml_file:
+        version: Versão
+        id_nfe: Id NFe
+        xml_files: Arquivos XMLs
+    models:
+      xml_file:
+        one: NFe
+        other: NFes

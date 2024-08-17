@@ -1,0 +1,14 @@
+<div>
+  <%= link_to 'Voltar', root_path %>
+</div>
+
+<%= form_with(model: @xml_file) do |f| %>
+  <div>
+    <%= f.label :xml_files %>
+    <%= f.file_field :xml_files, multiple: true %>
+  </div>
+
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>

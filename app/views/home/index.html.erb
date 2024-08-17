@@ -1,1 +1,5 @@
 <h2>Seja bem-vindo, Faça <%= link_to 'login', new_user_session_path %> para continuar</h2>
+
+<% if user_signed_in? %>
+  <p><%= link_to 'Fazer upload de um XML', new_xml_file_path %></p>
+<% end %>
