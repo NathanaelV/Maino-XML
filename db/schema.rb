@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_18_224059) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_18_233414) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_224059) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["einvoice_id"], name: "index_dests_on_einvoice_id"
+  end
+
+  create_table "dets", force: :cascade do |t|
+    t.integer "einvoice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["einvoice_id"], name: "index_dets_on_einvoice_id"
   end
 
   create_table "einvoices", force: :cascade do |t|
@@ -113,6 +120,35 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_224059) do
     t.index ["einvoice_id"], name: "index_ides_on_einvoice_id"
   end
 
+  create_table "impostos", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "v_icms"
+    t.string "v_ipi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_impostos_on_item_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "det_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["det_id"], name: "index_items_on_det_id"
+  end
+
+  create_table "prods", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "x_prod"
+    t.string "ncm"
+    t.string "cfop"
+    t.string "u_com"
+    t.string "q_com"
+    t.string "v_un_com"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_prods_on_item_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -130,8 +166,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_224059) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dests", "einvoices"
+  add_foreign_key "dets", "einvoices"
   add_foreign_key "emits", "einvoices"
   add_foreign_key "ender_dests", "dests"
   add_foreign_key "ender_emits", "emits"
   add_foreign_key "ides", "einvoices"
+  add_foreign_key "impostos", "items"
+  add_foreign_key "items", "dets"
+  add_foreign_key "prods", "items"
 end

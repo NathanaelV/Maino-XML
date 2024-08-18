@@ -42,5 +42,27 @@ RSpec.describe AssembleTheEinvoiceJob, type: :job do
     expect(einvoice_answer.dest.ender_dest.cep).to eq '01305901'
     expect(einvoice_answer.dest.ender_dest.c_pais).to eq '1058'
     expect(einvoice_answer.dest.ender_dest.x_pais).to eq 'BRASIL'
+
+    expect(einvoice_answer.det.item.first.prod.x_prod).to eq 'Batata frita'
+    expect(einvoice_answer.det.item.first.prod.ncm).to eq '02013000'
+    expect(einvoice_answer.det.item.first.prod.cfop).to eq '6102'
+    expect(einvoice_answer.det.item.first.prod.u_com).to eq 'BALDE'
+    expect(einvoice_answer.det.item.first.prod.q_com).to eq '100.0000'
+    expect(einvoice_answer.det.item.first.prod.v_un_com).to eq '25.0000000000'
+
+    expect(einvoice_answer.det.item.first.imposto.v_icms).to eq '330.00'
+    expect(einvoice_answer.det.item.first.imposto.v_ipi).to eq '250.00'
+
+    expect(einvoice_answer.det.item.second.prod.x_prod).to eq 'BALAO ESTRELA'
+    expect(einvoice_answer.det.item.second.prod.ncm).to eq '34013000'
+    expect(einvoice_answer.det.item.second.prod.cfop).to eq '6102'
+    expect(einvoice_answer.det.item.second.prod.u_com).to eq 'UN'
+    expect(einvoice_answer.det.item.second.prod.q_com).to eq '1.0000'
+    expect(einvoice_answer.det.item.second.prod.v_un_com).to eq '2.0600000000'
+
+    expect(einvoice_answer.det.item.second.imposto.v_icms).to eq '0.25'
+    expect(einvoice_answer.det.item.second.imposto.v_ipi).to eq ''
+
+    expect(einvoice_answer.det.item.length).to eq(2)
   end
 end

@@ -7,6 +7,7 @@ class AssembleTheEinvoiceJob < ApplicationJob
     create_ide(einvoice)
     create_emit(einvoice)
     create_dest(einvoice)
+    create_det(einvoice)
   end
 
   private
@@ -71,6 +72,39 @@ class AssembleTheEinvoiceJob < ApplicationJob
       c_pais: @my_xml['NFe']['infNFe']['dest']['enderDest']['cPais'],
       x_pais: @my_xml['NFe']['infNFe']['dest']['enderDest']['xPais'],
       dest:
+    )
+  end
+
+  def create_det(einvoice)
+    det = Det.create(einvoice:)
+    create_iten(det)
+  end
+
+  def create_iten(det)
+    @my_xml['NFe']['infNFe']['det'].each do |file|
+      item = Item.create(det:)
+      create_prod(item, file)
+      create_imposto(item, file)
+    end
+  end
+
+  def create_prod(item, file)
+    Prod.create(
+      x_prod: file['prod']['xProd'],
+      ncm: file['prod']['NCM'],
+      cfop: file['prod']['CFOP'],
+      u_com: file['prod']['uCom'],
+      q_com: file['prod']['qCom'],
+      v_un_com: file['prod']['vUnCom'],
+      item:
+    )
+  end
+
+  def create_imposto(item, file)
+    Imposto.create(
+      v_icms: file['imposto']['ICMS']['ICMS00']&.[]('vICMS') || '',
+      v_ipi: file['imposto']['IPI']['IPITrib']&.[]('vIPI') || '',
+      item:
     )
   end
 end
