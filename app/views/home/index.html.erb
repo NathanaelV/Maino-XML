@@ -1,4 +1,11 @@
-<h2>Seja bem-vindo, Faça <%= link_to 'login', new_user_session_path %> para continuar</h2>
+<h2>Seja bem-vindo!</h2>
+
+<% if user_signed_in? %>
+  <p><%= button_to 'Sair', destroy_user_session_path, method: :delete %></p>
+<% else %>
+  <p>Faça <%= link_to 'login', new_user_session_path %> para continuar</p>
+<% end %>
+
 
 <% if user_signed_in? %>
   <p><%= link_to 'Fazer upload de um XML', new_xml_file_path %></p>

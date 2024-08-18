@@ -9,9 +9,9 @@ describe 'User register an XML file' do
   end
 
   it 'from homepage' do
-    admin = create(:user)
+    user = create(:user)
 
-    login_as admin
+    login_as user
     visit root_path
     click_on 'Fazer upload de um XML'
 
