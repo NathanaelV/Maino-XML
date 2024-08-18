@@ -7,6 +7,5 @@ WORKDIR /myrails
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# COPY ./db ./bin ./
 COPY . .
-RUN rails db:migrate
+RUN rails db:migrate && rails db:seed

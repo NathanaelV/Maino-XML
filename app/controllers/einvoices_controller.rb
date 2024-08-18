@@ -1,14 +1,14 @@
-class XmlFilesController < ApplicationController
+class EinvoicesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @xml_file = XmlFile.new
+    @einvoice = Einvoice.new
   end
 
   def create
-    xml_file = XmlFile.new(xml_file_params)
+    einvoices = Einvoice.new(einvoice_params)
 
-    if xml_file.save
+    if einvoices.save
       redirect_to root_path, notice: I18n.t('messages.successfully')
     else
       flash.alert = I18n.t 'messages.failure'
@@ -17,7 +17,7 @@ class XmlFilesController < ApplicationController
 
   private
 
-  def xml_file_params
-    params.require(:xml_file).permit(xml_files: [])
+  def einvoice_params
+    params.require(:einvoice).permit(:xml_file)
   end
 end

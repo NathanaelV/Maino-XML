@@ -2,10 +2,10 @@
   <p><%= link_to 'Voltar', root_path %></p>
 </div>
 
-<%= form_with(model: @xml_file) do |f| %>
+<%= form_with(model: @einvoice) do |f| %>
   <div>
-    <%= f.label :xml_files %>
-    <%= f.file_field :xml_files, multiple: true %>
+    <%= f.label :xml_file %>
+    <%= f.file_field :xml_file %>
   </div>
 
   <div>
