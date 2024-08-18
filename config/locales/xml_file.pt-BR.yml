@@ -9,3 +9,6 @@ pt-BR:
       xml_file:
         one: NFe
         other: NFes
+  messages:
+    successfully: XML salvo com sucesso.
+    failure: Erro ao salvar XML, tente novamente.

@@ -6,25 +6,12 @@ class XmlFilesController < ApplicationController
   end
 
   def create
-    @xml_file = XmlFile.create!(xml_file_params)
-    # Dispara Worker, passando o ID do objeto
-    worker_file = XmlFile.find(@xml_file.id)
+    xml_file = XmlFile.new(xml_file_params)
 
-    worker_file.xml_files.blobs.each do |blob|
-      # Conseguir o path do arquivo:
-      path = "./storage/#{blob.key[0..1]}/#{blob.key[2..3]}/#{blob.key}"
-
-      # Abrir o arquivo:
-      file = File.read(path)
-      # Arquivo Hash
-      my_xml = Crack::XML.parse(file)
-
-      
-      # puts "\n\n\n\n"
-      # puts "=====" * 20
-      # pp my_xml
-      # puts "=====" * 20
-      # puts "\n\n\n\n"
+    if xml_file.save
+      redirect_to root_path, notice: I18n.t('messages.successfully')
+    else
+      flash.alert = I18n.t 'messages.failure'
     end
   end
 
