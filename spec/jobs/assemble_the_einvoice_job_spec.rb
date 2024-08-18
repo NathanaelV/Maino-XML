@@ -28,5 +28,19 @@ RSpec.describe AssembleTheEinvoiceJob, type: :job do
     expect(einvoice_answer.emit.ender_emit.c_pais).to eq "1058"
     expect(einvoice_answer.emit.ender_emit.x_pais).to eq "BRASIL"
     expect(einvoice_answer.emit.ender_emit.fone).to eq "211234567899"
+
+    expect(einvoice_answer.dest.cnpj).to eq '08370779000149'
+    expect(einvoice_answer.dest.x_nome).to eq 'MAINO CLIENTE'
+    expect(einvoice_answer.dest.ind_ie_dest).to eq '9'
+
+    expect(einvoice_answer.dest.ender_dest.x_lgr).to eq 'Rua Augusta, 50'
+    expect(einvoice_answer.dest.ender_dest.nro).to eq '50'
+    expect(einvoice_answer.dest.ender_dest.x_bairro).to eq 'Consolacao'
+    expect(einvoice_answer.dest.ender_dest.c_mun).to eq '3550308'
+    expect(einvoice_answer.dest.ender_dest.x_mun).to eq 'SAO PAULO'
+    expect(einvoice_answer.dest.ender_dest.uf).to eq 'SP'
+    expect(einvoice_answer.dest.ender_dest.cep).to eq '01305901'
+    expect(einvoice_answer.dest.ender_dest.c_pais).to eq '1058'
+    expect(einvoice_answer.dest.ender_dest.x_pais).to eq 'BRASIL'
   end
 end

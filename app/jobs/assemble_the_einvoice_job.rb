@@ -48,4 +48,29 @@ class AssembleTheEinvoiceJob < ApplicationJob
       emit:
     )
   end
+
+  def create_dest(einvoice)
+    dest = Dest.create(
+      cnpj: @my_xml['NFe']['infNFe']['dest']['CNPJ'],
+      x_nome: @my_xml['NFe']['infNFe']['dest']['xNome'],
+      ind_ie_dest: @my_xml['NFe']['infNFe']['dest']['indIEDest'],
+      einvoice:
+    )
+    create_ender_dest(dest)
+  end
+
+  def create_ender_dest(dest)
+    EnderDest.create(
+      x_lgr: @my_xml['NFe']['infNFe']['dest']['enderDest']['xLgr'],
+      nro: @my_xml['NFe']['infNFe']['dest']['enderDest']['nro'],
+      x_bairro: @my_xml['NFe']['infNFe']['dest']['enderDest']['xBairro'],
+      c_mun: @my_xml['NFe']['infNFe']['dest']['enderDest']['cMun'],
+      x_mun: @my_xml['NFe']['infNFe']['dest']['enderDest']['xMun'],
+      uf: @my_xml['NFe']['infNFe']['dest']['enderDest']['UF'],
+      cep: @my_xml['NFe']['infNFe']['dest']['enderDest']['CEP'],
+      c_pais: @my_xml['NFe']['infNFe']['dest']['enderDest']['cPais'],
+      x_pais: @my_xml['NFe']['infNFe']['dest']['enderDest']['xPais'],
+      dest:
+    )
+  end
 end

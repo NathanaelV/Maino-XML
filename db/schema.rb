@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_18_223005) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_18_224059) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -69,6 +69,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_223005) do
     t.index ["einvoice_id"], name: "index_emits_on_einvoice_id"
   end
 
+  create_table "ender_dests", force: :cascade do |t|
+    t.integer "dest_id", null: false
+    t.string "x_lgr"
+    t.string "nro"
+    t.string "x_bairro"
+    t.string "c_mun"
+    t.string "x_mun"
+    t.string "uf"
+    t.string "cep"
+    t.string "c_pais"
+    t.string "x_pais"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dest_id"], name: "index_ender_dests_on_dest_id"
+  end
+
   create_table "ender_emits", force: :cascade do |t|
     t.integer "emit_id", null: false
     t.string "x_lgr"
@@ -115,6 +131,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_223005) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dests", "einvoices"
   add_foreign_key "emits", "einvoices"
+  add_foreign_key "ender_dests", "dests"
   add_foreign_key "ender_emits", "emits"
   add_foreign_key "ides", "einvoices"
 end
