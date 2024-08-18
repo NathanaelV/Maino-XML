@@ -1,6 +1,7 @@
 class Einvoice < ApplicationRecord
   has_one_attached :xml_file
   has_one :ide, dependent: :destroy
+  has_one :emit, dependent: :destroy
 
   def xml_file=(value)
     file_name = "#{Time.now.to_i}-#{value.original_filename}"

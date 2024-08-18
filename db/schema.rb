@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_18_213820) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_18_223005) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,12 +39,52 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_213820) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "dests", force: :cascade do |t|
+    t.integer "einvoice_id", null: false
+    t.string "cnpj"
+    t.string "x_nome"
+    t.string "ind_ie_dest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["einvoice_id"], name: "index_dests_on_einvoice_id"
+  end
+
   create_table "einvoices", force: :cascade do |t|
     t.string "id_nfe"
     t.string "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "file_name"
+  end
+
+  create_table "emits", force: :cascade do |t|
+    t.integer "einvoice_id", null: false
+    t.string "cnpj"
+    t.string "x_nome"
+    t.string "x_fant"
+    t.string "ie"
+    t.string "crt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["einvoice_id"], name: "index_emits_on_einvoice_id"
+  end
+
+  create_table "ender_emits", force: :cascade do |t|
+    t.integer "emit_id", null: false
+    t.string "x_lgr"
+    t.string "nro"
+    t.string "x_cpl"
+    t.string "x_bairro"
+    t.string "c_mun"
+    t.string "x_mun"
+    t.string "uf"
+    t.string "cep"
+    t.string "c_pais"
+    t.string "x_pais"
+    t.string "fone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["emit_id"], name: "index_ender_emits_on_emit_id"
   end
 
   create_table "ides", force: :cascade do |t|
@@ -73,5 +113,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_213820) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "dests", "einvoices"
+  add_foreign_key "emits", "einvoices"
+  add_foreign_key "ender_emits", "emits"
   add_foreign_key "ides", "einvoices"
 end
