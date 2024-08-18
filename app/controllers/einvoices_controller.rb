@@ -6,9 +6,9 @@ class EinvoicesController < ApplicationController
   end
 
   def create
-    einvoices = Einvoice.new(einvoice_params)
+    einvoice = Einvoice.new(einvoice_params)
 
-    if einvoices.save
+    if einvoice.save
       redirect_to root_path, notice: I18n.t('messages.successfully')
     else
       flash.alert = I18n.t 'messages.failure'
