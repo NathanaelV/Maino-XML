@@ -19,6 +19,7 @@ describe 'User sends XML file' do
 
     expect(flash.notice).to eq 'XML salvo com sucesso.'
     expect(Einvoice.last.xml_file).to be_attached
+    expect(Einvoice.last.file_name).to eq file_name
     expect(response).to redirect_to root_path
   end
 
