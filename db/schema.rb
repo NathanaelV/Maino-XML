@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_18_233414) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_19_001434) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -149,6 +149,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_233414) do
     t.index ["item_id"], name: "index_prods_on_item_id"
   end
 
+  create_table "totals", force: :cascade do |t|
+    t.integer "einvoice_id", null: false
+    t.string "v_icms"
+    t.string "v_ipi"
+    t.string "v_pis"
+    t.string "v_cofins"
+    t.string "v_nf"
+    t.string "v_tot_trib"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["einvoice_id"], name: "index_totals_on_einvoice_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -174,4 +187,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_18_233414) do
   add_foreign_key "impostos", "items"
   add_foreign_key "items", "dets"
   add_foreign_key "prods", "items"
+  add_foreign_key "totals", "einvoices"
 end

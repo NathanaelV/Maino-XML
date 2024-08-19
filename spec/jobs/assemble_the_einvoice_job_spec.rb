@@ -64,5 +64,15 @@ RSpec.describe AssembleTheEinvoiceJob, type: :job do
     expect(einvoice_answer.det.item.second.imposto.v_ipi).to eq ''
 
     expect(einvoice_answer.det.item.length).to eq(2)
+
+    expect(einvoice_answer.total.v_icms).to eq '330.25'
+    expect(einvoice_answer.total.v_ipi).to eq '250.00'
+    expect(einvoice_answer.total.v_pis).to eq '0.00'
+    expect(einvoice_answer.total.v_cofins).to eq '0.00'
+    expect(einvoice_answer.total.v_nf).to eq '2752.06'
+    expect(einvoice_answer.total.v_tot_trib).to eq '405.00'
+
+    expect(einvoice_answer.id_nfe).to eq 'NFe33240860124452000107550040005007781056116414'
+    expect(einvoice_answer.version).to eq '4.00'
   end
 end

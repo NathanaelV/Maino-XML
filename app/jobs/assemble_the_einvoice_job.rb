@@ -8,6 +8,8 @@ class AssembleTheEinvoiceJob < ApplicationJob
     create_emit(einvoice)
     create_dest(einvoice)
     create_det(einvoice)
+    create_total(einvoice)
+    einvoice.update(id_nfe: @my_xml['NFe']['infNFe']['Id'])
   end
 
   private
@@ -105,6 +107,18 @@ class AssembleTheEinvoiceJob < ApplicationJob
       v_icms: file['imposto']['ICMS']['ICMS00']&.[]('vICMS') || '',
       v_ipi: file['imposto']['IPI']['IPITrib']&.[]('vIPI') || '',
       item:
+    )
+  end
+
+  def create_total(einvoice)
+    Total.create(
+      v_icms: @my_xml['NFe']['infNFe']['total']['ICMSTot']['vICMS'],
+      v_ipi: @my_xml['NFe']['infNFe']['total']['ICMSTot']['vIPI'],
+      v_pis: @my_xml['NFe']['infNFe']['total']['ICMSTot']['vPIS'],
+      v_cofins: @my_xml['NFe']['infNFe']['total']['ICMSTot']['vCOFINS'],
+      v_nf: @my_xml['NFe']['infNFe']['total']['ICMSTot']['vNF'],
+      v_tot_trib: @my_xml['NFe']['infNFe']['total']['ICMSTot']['vTotTrib'],
+      einvoice:
     )
   end
 end
