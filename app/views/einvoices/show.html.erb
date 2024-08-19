@@ -2,10 +2,90 @@
 
 <p><%= link_to 'Voltar', einvoices_path %></p>
 
-<p>Dados do Documento Fiscal:</p>
+<p>ID:      <%= @einvoice.id_nfe %></p>
+<p>Versão:  <%= @einvoice.version %></p>
+
+<h3>Dados do Documento Fiscal:</h3>
 <ul>
-  <li>Número de série: <%= @einvoice.ide.serie %></li>
-  <li>Número da NF: <%= @einvoice.ide.n_nf %></li>
-  <li>Data de emissão: <%= @einvoice.ide.dh_emi %></li>
+  <li>Número de série:  <%= @einvoice.ide.serie %></li>
+  <li>Número da NF:     <%= @einvoice.ide.n_nf %></li>
+  <li>Data de emissão:  <%= @einvoice.ide.dh_emi %></li>
 </ul>
+
+<h3>Dados do Emitente</h3>
+<ul>
+  <li>CNPJ:           <%= @einvoice.emit.cnpj %></li>
+  <li>Rasão Social:   <%= @einvoice.emit.x_nome %></li>
+  <li>Nome Fantasia:  <%= @einvoice.emit.x_fant %></li>
+  <P>Endereço:</P>
+  <ul>
+    <li>Rua:        <%= @einvoice.emit.ender_emit.x_lgr %></li>
+    <li>Número:     <%= @einvoice.emit.ender_emit.nro %></li>
+    <li>xCpl:       <%= @einvoice.emit.ender_emit.x_cpl %></li>
+    <li>Bairro:     <%= @einvoice.emit.ender_emit.x_bairro %></li>
+    <li>cMun:       <%= @einvoice.emit.ender_emit.c_mun %></li>
+    <li>Município:  <%= @einvoice.emit.ender_emit.x_mun %></li>
+    <li>Estado:     <%= @einvoice.emit.ender_emit.uf %></li>
+    <li>CEP:        <%= @einvoice.emit.ender_emit.cep %></li>
+    <li>cPais:      <%= @einvoice.emit.ender_emit.c_pais %></li>
+    <li>xPais:      <%= @einvoice.emit.ender_emit.x_pais %></li>
+    <li>Telefone:   <%= @einvoice.emit.ender_emit.fone %></li>
+  </ul>
+  <br>
+  <li>IE:   <%= @einvoice.emit.ie %></li>
+  <li>CRT:  <%= @einvoice.emit.crt %></li>
+</ul>
+
+<h3>Dados do Destinatário</h3>
+<ul>
+  <li>CNPJ:           <%= @einvoice.dest.cnpj %></li>
+  <li>Nome Fantasia:  <%= @einvoice.dest.x_nome %></li>
+  <P>Endereço:</P>
+  <ul>
+    <li>Rua:        <%= @einvoice.dest.ender_dest.x_lgr %></li>
+    <li>Número:     <%= @einvoice.dest.ender_dest.nro %></li>
+    <li>Bairro:     <%= @einvoice.dest.ender_dest.x_bairro %></li>
+    <li>cMun:       <%= @einvoice.dest.ender_dest.c_mun %></li>
+    <li>Município:  <%= @einvoice.dest.ender_dest.x_mun %></li>
+    <li>Estado:     <%= @einvoice.dest.ender_dest.x_mun %></li>
+    <li>CEP:        <%= @einvoice.dest.ender_dest.cep %></li>
+    <li>cPais:      <%= @einvoice.dest.ender_dest.c_pais %></li>
+    <li>País:       <%= @einvoice.dest.ender_dest.x_pais %></li>
+  </ul>
+  <br>
+  <li>indIEDest: <%= @einvoice.dest.ind_ie_dest %></li>
+</ul>
+<br>
+
+<h3>Det</h3>
+<% @einvoice.det.item.each do |file| %>
+  <p>Produto:</p>
+  <ul>
+    <li>Produto:  <%= file.prod.x_prod %></li>
+    <li>NCM:      <%= file.prod.ncm %></li>
+    <li>CFOP:     <%= file.prod.cfop %></li>
+    <li>uCom:     <%= file.prod.u_com %></li>
+    <li>qCom:     <%= file.prod.q_com %></li>
+    <li>vUnCom:   <%= file.prod.v_un_com %></li>
+  </ul>
+  <br>
+
+  <p>Imposto:</p>
+  <ul>
+    <li>vICMS: <%= file.imposto.v_icms %></li>
+    <li>vIPI: <%= file.imposto.v_ipi %></li>
+  </ul>
+<% end %>
+
+<h3>Total:</h3>
+<ul>
+  <li>vICMS:    <%= @einvoice.total.v_icms %></li>
+  <li>vIPI:     <%= @einvoice.total.v_ipi %></li>
+  <li>vPIS:     <%= @einvoice.total.v_pis %></li>
+  <li>vCOFINS:  <%= @einvoice.total.v_cofins %></li>
+  <li>vNF:      <%= @einvoice.total.v_nf %></li>
+  <li>vTotTrib: <%= @einvoice.total.v_tot_trib %></li>
+</ul>
+
+<br>
 
