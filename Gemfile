@@ -14,6 +14,8 @@ gem 'puma', '>= 5.0'
 
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
+gem 'crack'
+
 group :development, :test do
   gem 'byebug'
   gem 'capybara'

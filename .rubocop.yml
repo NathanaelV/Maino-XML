@@ -13,6 +13,10 @@ AllCops:
     - 'spec/rails_helper.rb'
   SuggestExtensions: false
 
+Lint/NonAtomicFileOperation:
+  Exclude:
+    - 'app/models/einvoice.rb'
+
 Style/Documentation:
   Enabled: false
 

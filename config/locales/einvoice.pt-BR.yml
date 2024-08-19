@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    attributes:
+      einvoice:
+        version: Versão
+        id_nfe: Id NFe
+        xml_file: Arquivo XML
+    models:
+      einvoice:
+        one: NFe
+        other: NFes
+  messages:
+    successfully: XML salvo com sucesso.
+    failure: Erro ao salvar XML, tente novamente.
