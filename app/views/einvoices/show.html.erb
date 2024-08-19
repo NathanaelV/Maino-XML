@@ -1,0 +1,11 @@
+<h1><%= @einvoice.file_name %></h1>
+
+<p><%= link_to 'Voltar', einvoices_path %></p>
+
+<p>Dados do Documento Fiscal:</p>
+<ul>
+  <li>Número de série: <%= @einvoice.ide.serie %></li>
+  <li>Número da NF: <%= @einvoice.ide.n_nf %></li>
+  <li>Data de emissão: <%= @einvoice.ide.dh_emi %></li>
+</ul>
+

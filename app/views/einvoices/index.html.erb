@@ -1,0 +1,7 @@
+<h1>Notas</h1>
+<p><%= link_to 'Voltar', root_path %></p>
+<p><%= link_to 'Adicionar nova nota', new_einvoice_path %></p>
+
+<% @einvoices.each do |einvoice| %>
+  <p><%= link_to einvoice.file_name, einvoice %></p>
+<% end %>
