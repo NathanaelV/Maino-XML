@@ -75,4 +75,22 @@ RSpec.describe AssembleTheEinvoiceJob, type: :job do
     expect(einvoice_answer.id_nfe).to eq 'NFe33240860124452000107550040005007781056116414'
     expect(einvoice_answer.version).to eq '4.00'
   end
+
+  it 'should assemble the einvoice second' do
+    einvoice = create(:einvoice, file_name: 'test_file2.xml')
+
+    AssembleTheEinvoiceJob.perform_now(einvoice)
+
+    einvoice_answer = Einvoice.last
+    expect(einvoice_answer.det.item.first.prod.x_prod).to eq '6"*10.97MM - 5749MM TUBO DE ACO CARBONO SOLDADO, NAO LIGADO, PADRAO ASTM A214, DE SECAO CIRCULAR, COM SOLDA POR RESISTEN'
+
+    expect(einvoice_answer.det.item.first.imposto.v_icms).to eq '2.22'
+    expect(einvoice_answer.det.item.first.imposto.v_ipi).to eq '1.75'
+
+    expect(einvoice_answer.det.item.second.imposto.v_icms).to eq '118.44'
+    expect(einvoice_answer.det.item.second.imposto.v_ipi).to eq ''
+
+    expect(einvoice_answer.det.item.third.imposto.v_icms).to eq '432.00'
+    expect(einvoice_answer.det.item.third.imposto.v_ipi).to eq ''
+  end
 end
