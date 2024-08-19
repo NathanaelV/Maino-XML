@@ -1,6 +1,14 @@
 class EinvoicesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @einvoices = Einvoice.all
+  end
+
+  def show
+    @einvoice = Einvoice.find(params[:id])
+  end
+
   def new
     @einvoice = Einvoice.new
   end
@@ -9,7 +17,7 @@ class EinvoicesController < ApplicationController
     einvoice = Einvoice.new(einvoice_params)
 
     if einvoice.save
-      AssembleTheEinvoiceJob.perform_later(einvoice)
+      AssembleTheEinvoiceJob.perform_now(einvoice)
       redirect_to root_path, notice: I18n.t('messages.successfully')
     else
       flash.alert = I18n.t 'messages.failure'
