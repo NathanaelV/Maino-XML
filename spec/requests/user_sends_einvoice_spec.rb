@@ -14,13 +14,18 @@ describe 'User sends XML file' do
     root_xml_path = "#{RSPEC_ROOT_TEST}#{path}"
     allow(File).to receive(:binwrite).with(root_xml_path, xml_file.read)
 
+    assemble_the_einvoice_job_spy = spy(AssembleTheEinvoiceJob)
+    stub_const 'AssembleTheEinvoiceJob', assemble_the_einvoice_job_spy
+
     login_as user
     post '/einvoices', params: einvoices_params
 
+    einvoice = Einvoice.last
     expect(flash.notice).to eq 'XML salvo com sucesso.'
-    expect(Einvoice.last.xml_file).to be_attached
-    expect(Einvoice.last.file_name).to eq file_name
+    expect(einvoice.xml_file).to be_attached
+    expect(einvoice.file_name).to eq file_name
     expect(response).to redirect_to root_path
+    expect(AssembleTheEinvoiceJob).to have_received(:perform_later).with(einvoice)
   end
 
   it 'if authentication' do

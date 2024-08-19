@@ -9,6 +9,7 @@ class EinvoicesController < ApplicationController
     einvoice = Einvoice.new(einvoice_params)
 
     if einvoice.save
+      AssembleTheEinvoiceJob.perform_later(einvoice)
       redirect_to root_path, notice: I18n.t('messages.successfully')
     else
       flash.alert = I18n.t 'messages.failure'
