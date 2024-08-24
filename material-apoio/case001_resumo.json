@@ -1,0 +1,106 @@
+{
+    "NFe": {
+        "infNFe": {
+            "ide": {
+                "serie": "4",
+                "nNF": "500778",
+                "dhEmi": "2024-08-12T14:21:59-03:00"
+            },
+            "emit": {
+                "CNPJ": "60124452000107",
+                "xNome": "MAINO SISTEMAS DE INFORMATICA LTD",
+                "xFant": "MAINO SISTEMAS",
+                "enderEmit": {
+                    "xLgr":     "RUA MARCOS MORO",
+                    "nro":      "16",
+                    "xCpl":     "SL 808",
+                    "xBairro":  "SAO FRANCISCO",
+                    "cMun":     "3304557",
+                    "xMun":     "RIO DE JANEIRO",
+                    "UF":       "RJ",
+                    "CEP":      "80530080",
+                    "cPais":    "1058",
+                    "xPais":    "BRASIL",
+                    "fone":     "211234567899"
+                },
+                "IE": "78205377",
+                "CRT": "3"
+            },
+            "dest": {
+                "CNPJ": "08370779000149",
+                "xNome": "MAINO CLIENTE",
+                "enderDest": {
+                    "xLgr": "Rua Augusta, 50",
+                    "nro": "50",
+                    "xBairro": "Consolacao",
+                    "cMun": "3550308",
+                    "xMun": "SAO PAULO",
+                    "UF": "SP",
+                    "CEP": "01305901",
+                    "cPais": "1058",
+                    "xPais": "BRASIL"
+                },
+                "indIEDest": "9"
+            },
+            "det": [
+                {
+                    "prod": {
+                        "xProd": "Batata frita",
+                        "NCM": "02013000",
+                        "CFOP": "6102",
+                        "uCom": "BALDE",
+                        "qCom": "100.0000",
+                        "vUnCom": "25.0000000000"
+                    },
+                    "imposto": {
+                        "ICMS": {
+                            "ICMS00": {
+                                "vICMS": "330.00"
+                            }
+                        },
+                        "IPI": {
+                            "IPITrib": {
+                                "vIPI": "250.00"
+                            }
+                        }
+                    }
+                },
+                {
+                    "prod": {
+                        "xProd": "BALAO ESTRELA",
+                        "NCM": "34013000",
+                        "CFOP": "6102",
+                        "uCom": "UN",
+                        "qCom": "1.0000",
+                        "vUnCom": "2.0600000000"
+                    },
+                    "imposto": {
+                        "ICMS": {
+                            "ICMS00": {
+                                "vICMS": "0.25"
+                            }
+                        }
+                    }
+                }
+            ],
+            "total": {
+                "ICMSTot": {
+                    "vICMS": "330.25",
+                    "vIPI": "250.00",
+                    "vPIS": "0.00",
+                    "vCOFINS": "0.00",
+                    "vNF": "2752.06",
+                    "vTotTrib": "405.00"
+                }
+            },
+            "infRespTec": {
+                "CNPJ": "08370779000149",
+                "xContato": "Rafael Gioia",
+                "email": "suporte@maino.com.br",
+                "fone": "2122245777"
+            },
+            "Id": "NFe33240860124452000107550040005007781056116414",
+            "versao": "4.00"
+        }
+    }
+}

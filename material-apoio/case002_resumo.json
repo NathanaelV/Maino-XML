@@ -1,0 +1,123 @@
+{
+    "NFe": {
+        "infNFe": {
+            "ide": {
+                "serie": "4",
+                "nNF": "500780",
+                "dhEmi": "2024-08-12T14:28:11-03:00"
+            },
+            "emit": {
+                "CNPJ": "60124452000107",
+                "xNome": "MAINO SISTEMAS DE INFORMATICA LTD",
+                "xFant": "MAINO SISTEMAS",
+                "enderEmit": {
+                    "xLgr": "RUA MARCOS MORO",
+                    "nro": "16",
+                    "xCpl": "SL 808",
+                    "xBairro": "SAO FRANCISCO",
+                    "cMun": "3304557",
+                    "xMun": "RIO DE JANEIRO",
+                    "UF": "RJ",
+                    "CEP": "80530080",
+                    "cPais": "1058",
+                    "xPais": "BRASIL",
+                    "fone": "211234567899"
+                },
+                "IE": "78205377",
+                "CRT": "3"
+            },
+            "dest": {
+                "CNPJ": "08370779000149",
+                "xNome": "MAINO",
+                "enderDest": {
+                    "xLgr": "Rua Augusta, 50",
+                    "nro": "50",
+                    "xBairro": "Consolacao",
+                    "cMun": "3550308",
+                    "xMun": "SAO PAULO",
+                    "UF": "SP",
+                    "CEP": "01305901",
+                    "cPais": "1058",
+                    "xPais": "BRASIL"
+                },
+                "indIEDest": "9"
+            },
+            "det": [
+                {
+                    "prod": {
+                        "xProd": "6\"*10.97MM - 5749MM TUBO DE ACO CARBONO SOLDADO, NAO LIGADO, PADRAO ASTM A214, DE SECAO CIRCULAR, COM SOLDA POR RESISTEN",
+                        "NCM": "73063000",
+                        "CFOP": "6102",
+                        "uCom": "PECAS",
+                        "qCom": "10.0000",
+                        "vUnCom": "5.3750000000"
+                    },
+                    "imposto": {
+                        "ICMS": {
+                            "ICMS00": {
+                                "vICMS": "2.22"
+                            }
+                        },
+                        "IPI": {
+                            "IPITrib": {
+                                "vIPI": "1.75"
+                            }
+                        }
+                    }
+                },
+                {
+                    "prod": {
+                        "xProd": "LIMA ACIDA TAHITI",
+                        "NCM": "03047400",
+                        "CFOP": "6102",
+                        "uCom": "CX",
+                        "qCom": "1000.0000",
+                        "vUnCom": "0.9870000000"
+                    },
+                    "imposto": {
+                        "ICMS": {
+                            "ICMS00": {
+                                "vICMS": "118.44"
+                            }
+                        }
+                    }
+                },
+                {
+                    "prod": {
+                        "xProd": "Chinelo vermelho 123",
+                        "NCM": "08055000",
+                        "CFOP": "6102",
+                        "uCom": "CX",
+                        "qCom": "72.0000",
+                        "vUnCom": "50.0000000000"
+                    },
+                    "imposto": {
+                        "ICMS": {
+                            "ICMS00": {
+                                "vICMS": "432.00"
+                            }
+                        }
+                    }
+                }
+            ],
+            "total": {
+                "ICMSTot": {
+                    "vICMS": "552.66",
+                    "vIPI": "1.75",
+                    "vPIS": "0.00",
+                    "vCOFINS": "0.00",
+                    "vNF": "4642.50",
+                    "vTotTrib": "799.20"
+                }
+            },
+            "infRespTec": {
+                "CNPJ": "08370779000149",
+                "xContato": "Rafael Gioia",
+                "email": "suporte@maino.com.br",
+                "fone": "2122245777"
+            },
+            "Id": "NFe33240860124452000107550040005007801056116439",
+            "versao": "4.00"
+        }
+    }
+}
